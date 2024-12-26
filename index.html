@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense_Manager</title>
+    <script src="index.js"></script>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <header>
+        <h1 style="text-align: center;">Expense Manager</h1>
+        
+    </header>
+    <div class="main">
+    
+    <table> 
+        <tr>
+            <td><h1>Balance:</h1></td>
+            <td> <h1 id="curr_value">0.00</h1></td>
+        </tr>
+    </table>
+
+    <table class="function">
+        <tr>
+            <td><label for="value"> Enter Amount:</label>
+                <input type="number" id= value default=" "></td>
+                <td>
+                    <label>Select Category:</label>
+                     <div id="DropDown" class="dd"></div>
+                </td>
+        </tr>
+        <tr>
+            <td>
+                <button onclick="modify()" class="update">Update</button>
+            </td>
+            <td>    
+                <button onclick="Add_cat()" class="add_cat">Add Category</button>
+            </td>
+        </tr>
+    </table>
+        <h1>History</h1>
+    <table class="history">
+        <thead>
+                <th>S.NO</th>
+                <th>DATE</th>
+                <th>TIME</th>
+                <th>CATEGORY</th>
+                <th>BALANCE</th>
+            
+        </thead>
+        <tbody id="history_table">
+
+        </tbody>
+    </table>   
+    <br>
+    <table class="status">
+            <tr>
+                <td><h3>TOTAL INCOME:</h3></td>
+                <td><h3  id="tot_inc">0.00</h3></td>    
+                <td><h3>TOTAL EXPENSES:</h3></td>
+                <td><h3  id="tot_exp">0.00</h3></td>
+            </tr>
+    </table>
+</div>
+</body>
+</html>
