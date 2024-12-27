@@ -3,15 +3,6 @@ let category=["income","fuel","food"];
 let income=0.00;
 let expense = 0.00;
 let count=0;
-function nullifyobj(){
-    return history = {
-        sno:null,
-        date:null,
-        time:null,
-        category:null,
-        amount:null
-    }
-}
 
 function display(){
 
@@ -35,44 +26,48 @@ function display(){
 
 function Add_cat(){
     let new_cat = prompt("Enter category","");
-    if(new_cat === null || new_cat ==""){
+    if(!(new_cat == null)){
+    if(new_cat ==""){
         alert("Enter a valid Category");
     }
     else if(category.includes(new_cat.toLowerCase())){
         alert("Already in Category");
     }
     else{
-        category.push(new_cat.toLowerCase());
+        category.unshift(new_cat.toLowerCase());
         alert("Added successfully!!");       
     }
     display();
+}
+    
     
 }
 
-function update_history(his){
+function update_history(sno,category,amount,date,time){
 
     let tab = document.getElementById("history_table");
     
      tr=document.createElement("tr");
+     console.log(sno)
 
     td=document.createElement("td");
-    td.innerHTML=his.sno;
+    td.innerHTML=sno;
     tr.appendChild(td);
 
     td=document.createElement("td");
-    td.innerHTML=his.date;
+    td.innerHTML=date;
     tr.appendChild(td);
 
     td=document.createElement("td");
-    td.innerHTML=his.time;
+    td.innerHTML=time;
     tr.appendChild(td);
 
     td=document.createElement("td");
-    td.innerHTML=his.category;
+    td.innerHTML=category;
     tr.appendChild(td);
 
     td=document.createElement("td");
-    td.innerHTML=his.amount;
+    td.innerHTML=amount;
     tr.appendChild(td);
     
     tab.appendChild(tr);
@@ -90,11 +85,11 @@ function modify(){
     let cat = document.getElementById("Category").value;
     let current = document.getElementById("curr_value");
     let amt = document.getElementById("value").value; 
-    if(!isNaN(parseFloat(amt))){
+    let udate= document.getElementById('date').value;
+    if(!isNaN(parseFloat(amt)) && !(udate === null || udate === '')){
         if(cat === "income"){
             money = money + parseFloat(amt); 
-            income=(Number(income)+Number(amt)).toFixed(2);  
-            console.log(income);
+            income=(Number(income)+Number(amt)).toFixed(2);
            }
            else{    
             money = money - parseFloat(amt);
@@ -104,29 +99,44 @@ function modify(){
            current.innerHTML=money.toFixed(2);
         
            //update history
-           let obj = nullifyobj();
            count++;
-           obj.sno=count;
-           obj.category= cat.toUpperCase();
-        
+           let sno=count;
+           let category= cat.toUpperCase();
+           let amount;
            if(cat === "income")
-           obj.amount = money +"&#x2191;";
+               amount = money +"&#x2191;";
            else{
-            obj.amount = money +"&#x2193;";
+               amount = money +"&#x2193;";
            }
            let date = new Date();
-           obj.date = date.toLocaleDateString();
-           obj.time = date.toLocaleTimeString();
-           update_history(obj);
+           let res_date = udate;
+           let time = date.toLocaleTimeString();
+           update_history(sno,category,amount,res_date,time);
 
            update_inc_exp();
     }
     else{
-        alert("Please Enter the Amount");
+        if(isNaN(parseFloat(amt))){
+            alert("Please Enter the Amount");
+        }
+        else
+        alert("Please Enter the Date");
+        
     }
     
 }
 
+
+function hist(){
+    let his_tab = document.getElementById("his_dis");
+    his_tab.style.display="block";
+
+}
+function go_back(){
+    let his_tab = document.getElementById("his_dis");
+    his_tab.style.display="none";
+
+}
 
 
 window.onload = display;
