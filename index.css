@@ -16,25 +16,57 @@ body{
     color:azure  
 }
 .function {
+    margin-top: 80px;
+    
     background-color: #f9f9f9;
     color: black;
     border: solid grey;
-    width: 60cap;
-    height: 15cap;
+    height: fit-content;
+    width: fit-content;
+    padding: 30px;
+    align-items: center;
     justify-content: center ;
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    border-radius: 20px;
+    font-size: larger;
+
     
 }
 
-.function td label{
+.date_cat,.date_cat select{
+    border: 2px solid green;
+    font-size: 15px;
+    border-radius: 5px;
+    display: inline-block;
+    margin-bottom: 17px;
+}
+
+
+
+.info{
+    display: flex;
+    flex-direction: column;
+    align-items: self-start;
+}
+.function  label{
     font-size: 20px;
+    margin-bottom: 2px;
+    margin-top: 25px;
+
    
 }
-.function td input[type=number]{
+.function  input[type=number]{
     font-size: 18px;
     border: 2px  solid rgb(36, 238, 211);
     border-radius: 4px;
+    width: 30vh;
+    margin-top: 8px;
 
+}
+.function button{
+    margin-top:25px;
 }
 
 .update,.add_cat {
@@ -52,23 +84,18 @@ body{
     box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 60px 0 rgba(0,0,0,0.19);
 }
 
-.dd{
- 
-    display: inline-block;
-}
-#Category{
-    
-    border-radius: 5px;
-    font-size: large;
-}
+
+
 #Category:hover{
     background-color: rgb(206, 248, 255);
 }
-.dd {
-    border: none;
-    cursor: pointer;
-  }
- 
+
+#his_dis_btn{
+    font-size: 26px;
+    border-color: cadetblue;
+    border-radius: 7px;
+    color: rgb(255, 119, 8);
+}
 
 .history {
     color: black;
@@ -78,13 +105,28 @@ body{
     border-width: thin;
     background-color: #f9f9f9;
     text-align: center;
-    font-size: large;
+    font-size: 18px;
 }
 .history th { 
     border: solid gray    
 }
 .history td{
     border: solid gray;
+}
+
+#his_dis{
+    display: none;
+    position: fixed;
+
+    background-color: rgb(2, 2, 39);
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    backdrop-filter: blur(4px);
+    font-size: 18px;
 }
 
 .status tr td h3{
